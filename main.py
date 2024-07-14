@@ -36,7 +36,7 @@ if __name__ == '__main__':
     else:
         raise Exception('You must set either data_folder or data_url')
 
-    output_file = f'out/{mosque_name}_{current_year}.ics'
+    output_file = f'out/{mosque_name}_{language}_{Param.ALARM_BEFORE_MINUTES}_{current_year}.ics'
     output_file = os.path.join(os.getcwd(), output_file)
 
     # create the calendar

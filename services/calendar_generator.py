@@ -8,7 +8,7 @@ from util.util import Util
 
 class MawaqitCalendarGenerator:
     EN_PRAYER_NAMES = ['fajr', 'shuruk', 'dhuhr', 'asr', 'maghrib', 'isha']
-    AR_PRAYER_NAMES = ['الفَجْر', 'الشُّروق', 'الظُّهْر', 'العَصْر', 'المَغْرِب', 'العِشَاء']
+    AR_PRAYER_NAMES = ['صلاة الفجر', 'الشروق', 'صلاة الظهر', 'صلاة العصر', 'صلاة المغرب', 'صلاء العشاء']
 
     @staticmethod
     def get_single_prayer_event(en_prayer_name: str,
