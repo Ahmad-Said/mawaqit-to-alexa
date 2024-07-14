@@ -1,0 +1,3 @@
+[submodule "mawaqit-api"]
+	path = mawaqit-api
+	url = https://github.com/Ahmad-Said/mawaqit-api
