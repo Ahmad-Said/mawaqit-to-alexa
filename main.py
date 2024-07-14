@@ -10,6 +10,8 @@ if __name__ == '__main__':
     # set the parameters
     Param.ALARM_BEFORE_MINUTES = 15
     Param.SUMMARY_PREFIX = ''
+    # language = 'ar'
+    language = 'en'
 
     ## set directly the url of the mawaqit online link
     data_url = 'https://mawaqit.net/fr/grande-mosquee-de-paris'
@@ -43,7 +45,7 @@ if __name__ == '__main__':
         year=current_year,
         output_file=output_file,
         time_zone='Europe/Paris',
-        language='ar',
+        language=language
     )
 
 

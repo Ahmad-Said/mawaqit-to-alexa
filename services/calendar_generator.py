@@ -7,7 +7,7 @@ from util.util import Util
 
 
 class MawaqitCalendarGenerator:
-    EN_PRAYER_NAMES = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha']
+    EN_PRAYER_NAMES = ['fajr', 'shuruk', 'dhuhr', 'asr', 'maghrib', 'isha']
     AR_PRAYER_NAMES = ['الفَجْر', 'الشُّروق', 'الظُّهْر', 'العَصْر', 'المَغْرِب', 'العِشَاء']
 
     @staticmethod
@@ -74,7 +74,7 @@ class MawaqitCalendarGenerator:
                 if day == 29 and month_number == 2 and not Util.is_leap_year(year):
                     continue
                 for prayer_nb, prayer_time in enumerate(prayer_times):
-                    en_prayer_name = MawaqitCalendarGenerator.EN_PRAYER_NAMES[prayer_nb]
+                    en_prayer_name = MawaqitCalendarGenerator.EN_PRAYER_NAMES[prayer_nb].capitalize()
                     ar_prayer_name = MawaqitCalendarGenerator.AR_PRAYER_NAMES[prayer_nb]
                     event_params = {
                         'en_prayer_name': en_prayer_name,
@@ -96,7 +96,6 @@ class MawaqitCalendarGenerator:
                                                                                      suffix_id='at',
                                                                                      trigger_before_min=0)
                     cal.add_component(event_at_time)
-            break
 
         MawaqitCalendarGenerator.save_calendar_to_file(cal, output_file)
         return cal
