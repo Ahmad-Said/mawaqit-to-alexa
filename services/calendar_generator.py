@@ -45,12 +45,12 @@ class MawaqitCalendarGenerator:
         event['uid'] = f'{en_prayer_name}-{year}-{month}-{day}-{suffix_id}'
 
         # Create an alarm x minutes before the event
-        if trigger_before_min > 0:
-            alarm = Alarm()
-            alarm.add('action', 'DISPLAY')
-            alarm.add('description', f'{en_prayer_name} prayer time before {trigger_before_min} minutes')
-            alarm.add('trigger', datetime.timedelta(minutes=-trigger_before_min))
-            event.add_component(alarm)
+        # even if trigger time is zero has effect at the time of the event
+        alarm = Alarm()
+        alarm.add('action', 'DISPLAY')
+        alarm.add('description', f'{en_prayer_name} prayer time before {trigger_before_min} minutes')
+        alarm.add('trigger', datetime.timedelta(minutes=-trigger_before_min))
+        event.add_component(alarm)
         return event
 
     @staticmethod
