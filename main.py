@@ -1,8 +1,9 @@
 import datetime
 import os
 
-from data_provider.api_mawaqit_provider import ApiMawaqitProvider
+from data_provider.scraping_mawaqit_provider import ScrapingMawaqitProvider
 from data_provider.csv_mawaqit_provider import CsvMawaqitProvider
+from exceptions.missing_param_exception import MissingParamException
 from util.param import Param
 from services.calendar_generator import MawaqitCalendarGenerator
 
@@ -24,7 +25,7 @@ if __name__ == '__main__':
 
     if 'data_url' in locals():
         data_url = locals()['data_url']
-        api_mawaqit_provider = ApiMawaqitProvider(data_url)
+        api_mawaqit_provider = ScrapingMawaqitProvider(data_url)
         year_calendar = api_mawaqit_provider.getCurrentYearCalendar()
         mosque_name = api_mawaqit_provider.masjid_endpoint
     elif 'data_folder' in locals():
@@ -34,7 +35,7 @@ if __name__ == '__main__':
         data_folder = os.path.join(os.getcwd(), data_folder)
         year_calendar = CsvMawaqitProvider(data_folder).getCurrentYearCalendar()
     else:
-        raise Exception('You must set either data_folder or data_url')
+        raise MissingParamException('You must set either data_folder or data_url')
 
     output_file = f'out/{mosque_name}_{language}_{Param.ALARM_BEFORE_MINUTES}_{current_year}.ics'
     output_file = os.path.join(os.getcwd(), output_file)

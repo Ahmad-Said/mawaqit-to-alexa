@@ -1,4 +1,6 @@
 import datetime
+import os
+
 from icalendar import Calendar, Event, Alarm
 
 from util.param import Param
@@ -53,6 +55,7 @@ class MawaqitCalendarGenerator:
 
     @staticmethod
     def save_calendar_to_file(cal: Calendar, filename: str):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
         with open(filename, 'wb') as f:
             f.write(cal.to_ical())
         print(f'Calendar saved to {filename}')

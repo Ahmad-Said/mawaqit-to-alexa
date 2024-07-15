@@ -1,2 +1,5 @@
 icalendar
-git+https://github.com/Ahmad-Said/mawaqit-api
+requests
+bs4
+redis
+python-dotenv
